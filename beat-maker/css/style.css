@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 0 5rem;
+}
+
+i,
+svg {
+    pointer-events: none;
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+}
+
+.kick-pad {
+    background-color: #83a0f7;
+}
+
+.snare-pad {
+    background-color: #fac3fa;
+}
+
+.hihat-pad {
+    background-color: #fcd386;
+}
+
+.kick-pad.active {
+    background-color: royalblue;
+}
+
+.snare-pad.active {
+    background-color: violet;
+}
+
+.hihat-pad.active {
+    background-color: orange;
+}
+
+.kick-track,
+.snare-track,
+.hihat-track {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.kick,
+.snare,
+.hihat {
+    display: flex;
+}
+
+.sequencer {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.controls button {
+    padding: 0.5rem;
+    border: none;
+    background-color: #777;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.pad {
+    transition: all 0.5s ease;
+}
+
+.play {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background-color: #777;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+
+select {
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.mute.active {
+    background-color: red;
+}
+
+.tempo {
+    margin: 3rem;
+    width: 30%;
+}
+
+.tempo-slider {
+    padding: 0.2rem;
+    -webkit-appearance: none;
+    margin: 1rem 0.5rem;
+    width: 100%;
+    position: relative;
+    background-color: rgb(88, 88, 88);
+    cursor: pointer;
+    border-radius: 1rem;
+    outline: none;
+}
+
+.tempo p {
+    font-size: 1.5rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+@keyframes playTrack {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}

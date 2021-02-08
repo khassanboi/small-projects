@@ -1,0 +1,221 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    padding: 2rem 0;
+	background-image: linear-gradient(120deg, #e2c35d, #d88771);
+	color: white;
+	font-family: "Poppins", sans-serif;
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 40% 1fr;
+	grid-template-rows: repeat(4, max-content);
+	grid-row-gap: 1rem;
+	align-items: center;
+}
+
+.page-title {
+	grid-column: 2 / 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	min-height: 20vh;
+	grid-column: 2 / 3;
+	display: flex;
+	flex: 1;
+	align-items: center;
+
+	@media screen and (max-width: 1000px) {
+		display: grid;
+		grid-template-columns: 1fr min-width;
+	}
+}
+
+form input,
+form button {
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: none;
+	background: white;
+	outline: none;
+}
+
+form button {
+	background: white;
+	color: #d88771;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+form button:hover {
+	background: #d88771;
+	color: white;
+}
+
+.todo-container {
+	grid-column: 2 / 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: flex-start;
+}
+
+.todo-list {
+	min-width: 100%;
+	list-style: none;
+}
+
+.todo {
+	margin: 0.5rem 0;
+	background-color: white;
+	color: black;
+	font-size: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: all 0.5s ease;
+}
+
+.todo li {
+	flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+	background-color: #ff6f47;
+	color: white;
+	border: none;
+	padding: 0.5rem;
+	cursor: pointer;
+	font-size: 0.7rem;
+	outline: none;
+}
+
+.complete-btn {
+	background-color: rgb(73, 204, 73);
+}
+
+.todo-item {
+	padding: 0 0.5rem;
+}
+
+.fa-check,
+.fa-trash {
+	pointer-events: none;
+}
+
+.completed {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
+.run {
+	transform: translateX(-200%);
+	opacity: 0;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	border: none;
+
+    background-color: white;
+	color: #ff6f47;
+	width: 100%;
+	cursor: pointer;
+	padding: 0.6rem;
+}
+
+.select {
+	margin: 1rem;
+	position: relative;
+	overflow: hidden;
+    margin-right: 0;
+    flex: 1;
+}
+
+.select::after {
+	content: "\25BC";
+	position: absolute;
+	background-color: #ff6f47;
+	top: 0;
+	right: 0;
+	padding: 0.4rem;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+
+.select:hover::after {
+	background-color: white;
+	color: #ff6f47;
+}
+
+@media screen and (max-width: 1000px) {
+	body {
+		grid-template-columns: 1fr 50% 1fr;
+	}
+
+	form {
+		display: grid;
+		grid-template-columns: 1fr 30px;
+	}
+
+	form input {
+		grid-column: 1 / 2;
+	}
+
+	form button {
+		grid-column: 2 / -1;
+	}
+
+	.select {
+		grid-column: 1 / -1;
+		margin-left: 0;
+		display: flex;
+	}
+
+	select {
+		flex: 1;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+}
+
+.delete {
+	text-decoration: none;
+	background-color: white;
+	color: #ff6f47;
+	padding: 0.5rem 3rem;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-column: 2 / 3;
+	justify-self: center;
+	transition: all 0.3s ease;
+}
+
+.delete:hover {
+	background-color: #ff6f47;
+	color: white;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        grid-template-columns: 1fr 80% 1fr;
+    }
+
+    form input {
+        width: 100%;
+    }
+}

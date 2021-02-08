@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KHASDEV | Web Development</title>
+    <meta name="description" content="An interactive animated landscape built with three.js"/>
+    <meta name="keywords" content="three.js, javascript, webgl, animation, landscape, interactive, demo"/>
+    <meta name="author" content="Codrops"/>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,800" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-5.7.1-web/css/all.css">
+    <script src="js/style.js"></script>
+</head>
+<body class="demo-1">
+
+<header>
+    <div class="frame">
+        <ul class="list-unstyled languageSelector">
+            <li class="p-1 liFlag">
+                <a href="#uz" id="uz" data-reload>
+                    <img src="images/uzbekistn.png" class="flag wow bounceInRight" data-reload>
+                </a>
+            </li>
+            <li class="p-1 liFlag">
+                <a href="#en" id="en" data-reload>
+                    <img src="images/united-kingdom.png" class="flag wow bounceInRight" data-reload>
+                </a>
+            </li>
+            <li class="p-1 liFlag">
+                <a href="#ru" id="ru" data-reload>
+                    <img src="images/russia.png" class="flag wow bounceInRight" data-reload>
+                </a>
+            </li>
+        </ul>
+        <a class="frame__previous" href="#">
+            <div class="logoSpan text-center pt-1 wow bounceInLeft">
+                <img src="images/KHASDEV.png" class="imgLogo" alt="">
+            </div>
+        </a>
+    </div>
+    <div class="content">
+        <canvas class="landscape"></canvas>
+        <script id="custom-vertex" type="x-shader/x-vertex">
+
+					//
+					// GLSL textureless classic 3D noise "cnoise",
+					// with an RSL-style periodic variant "pnoise".
+					// Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+					// Version: 2011-10-11
+					//
+					// Many thanks to Ian McEwan of Ashima Arts for the
+					// ideas for permutation and gradient selection.
+					//
+					// Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+					// Distributed under the MIT license. See LICENSE file.
+					// https://github.com/stegu/webgl-noise
+					//
+
+					vec3 mod289(vec3 x)
+					{
+						return x - floor(x * (1.0 / 289.0)) * 289.0;
+					}
+
+					vec4 mod289(vec4 x)
+					{
+						return x - floor(x * (1.0 / 289.0)) * 289.0;
+					}
+
+					vec4 permute(vec4 x)
+					{
+						return mod289(((x*34.0)+1.0)*x);
+					}
+
+					vec4 taylorInvSqrt(vec4 r)
+					{
+						return 1.79284291400159 - 0.85373472095314 * r;
+					}
+
+					vec3 fade(vec3 t) {
+						return t*t*t*(t*(t*6.0-15.0)+10.0);
+					}
+
+					// Classic Perlin noise
+					float cnoise(vec3 P)
+					{
+						vec3 Pi0 = floor(P); // Integer part for indexing
+						vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
+						Pi0 = mod289(Pi0);
+						Pi1 = mod289(Pi1);
+						vec3 Pf0 = fract(P); // Fractional part for interpolation
+						vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+						vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
+						vec4 iy = vec4(Pi0.yy, Pi1.yy);
+						vec4 iz0 = Pi0.zzzz;
+						vec4 iz1 = Pi1.zzzz;
+
+						vec4 ixy = permute(permute(ix) + iy);
+						vec4 ixy0 = permute(ixy + iz0);
+						vec4 ixy1 = permute(ixy + iz1);
+
+						vec4 gx0 = ixy0 * (1.0 / 7.0);
+						vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+						gx0 = fract(gx0);
+						vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
+						vec4 sz0 = step(gz0, vec4(0.0));
+						gx0 -= sz0 * (step(0.0, gx0) - 0.5);
+						gy0 -= sz0 * (step(0.0, gy0) - 0.5);
+
+						vec4 gx1 = ixy1 * (1.0 / 7.0);
+						vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+						gx1 = fract(gx1);
+						vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
+						vec4 sz1 = step(gz1, vec4(0.0));
+						gx1 -= sz1 * (step(0.0, gx1) - 0.5);
+						gy1 -= sz1 * (step(0.0, gy1) - 0.5);
+
+						vec3 g000 = vec3(gx0.x,gy0.x,gz0.x);
+						vec3 g100 = vec3(gx0.y,gy0.y,gz0.y);
+						vec3 g010 = vec3(gx0.z,gy0.z,gz0.z);
+						vec3 g110 = vec3(gx0.w,gy0.w,gz0.w);
+						vec3 g001 = vec3(gx1.x,gy1.x,gz1.x);
+						vec3 g101 = vec3(gx1.y,gy1.y,gz1.y);
+						vec3 g011 = vec3(gx1.z,gy1.z,gz1.z);
+						vec3 g111 = vec3(gx1.w,gy1.w,gz1.w);
+
+						vec4 norm0 = taylorInvSqrt(vec4(dot(g000, g000), dot(g010, g010), dot(g100, g100), dot(g110, g110)));
+						g000 *= norm0.x;
+						g010 *= norm0.y;
+						g100 *= norm0.z;
+						g110 *= norm0.w;
+						vec4 norm1 = taylorInvSqrt(vec4(dot(g001, g001), dot(g011, g011), dot(g101, g101), dot(g111, g111)));
+						g001 *= norm1.x;
+						g011 *= norm1.y;
+						g101 *= norm1.z;
+						g111 *= norm1.w;
+
+						float n000 = dot(g000, Pf0);
+						float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
+						float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
+						float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
+						float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
+						float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
+						float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
+						float n111 = dot(g111, Pf1);
+
+						vec3 fade_xyz = fade(Pf0);
+						vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
+						vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
+						float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
+						return 2.2 * n_xyz;
+					}
+
+					// Classic Perlin noise, periodic variant
+					float pnoise(vec3 P, vec3 rep)
+					{
+						vec3 Pi0 = mod(floor(P), rep); // Integer part, modulo period
+						vec3 Pi1 = mod(Pi0 + vec3(1.0), rep); // Integer part + 1, mod period
+						Pi0 = mod289(Pi0);
+						Pi1 = mod289(Pi1);
+						vec3 Pf0 = fract(P); // Fractional part for interpolation
+						vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+						vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
+						vec4 iy = vec4(Pi0.yy, Pi1.yy);
+						vec4 iz0 = Pi0.zzzz;
+						vec4 iz1 = Pi1.zzzz;
+
+						vec4 ixy = permute(permute(ix) + iy);
+						vec4 ixy0 = permute(ixy + iz0);
+						vec4 ixy1 = permute(ixy + iz1);
+
+						vec4 gx0 = ixy0 * (1.0 / 7.0);
+						vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+						gx0 = fract(gx0);
+						vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
+						vec4 sz0 = step(gz0, vec4(0.0));
+						gx0 -= sz0 * (step(0.0, gx0) - 0.5);
+						gy0 -= sz0 * (step(0.0, gy0) - 0.5);
+
+						vec4 gx1 = ixy1 * (1.0 / 7.0);
+						vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+						gx1 = fract(gx1);
+						vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
+						vec4 sz1 = step(gz1, vec4(0.0));
+						gx1 -= sz1 * (step(0.0, gx1) - 0.5);
+						gy1 -= sz1 * (step(0.0, gy1) - 0.5);
+
+						vec3 g000 = vec3(gx0.x,gy0.x,gz0.x);
+						vec3 g100 = vec3(gx0.y,gy0.y,gz0.y);
+						vec3 g010 = vec3(gx0.z,gy0.z,gz0.z);
+						vec3 g110 = vec3(gx0.w,gy0.w,gz0.w);
+						vec3 g001 = vec3(gx1.x,gy1.x,gz1.x);
+						vec3 g101 = vec3(gx1.y,gy1.y,gz1.y);
+						vec3 g011 = vec3(gx1.z,gy1.z,gz1.z);
+						vec3 g111 = vec3(gx1.w,gy1.w,gz1.w);
+
+						vec4 norm0 = taylorInvSqrt(vec4(dot(g000, g000), dot(g010, g010), dot(g100, g100), dot(g110, g110)));
+						g000 *= norm0.x;
+						g010 *= norm0.y;
+						g100 *= norm0.z;
+						g110 *= norm0.w;
+						vec4 norm1 = taylorInvSqrt(vec4(dot(g001, g001), dot(g011, g011), dot(g101, g101), dot(g111, g111)));
+						g001 *= norm1.x;
+						g011 *= norm1.y;
+						g101 *= norm1.z;
+						g111 *= norm1.w;
+
+						float n000 = dot(g000, Pf0);
+						float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
+						float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
+						float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
+						float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
+						float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
+						float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
+						float n111 = dot(g111, Pf1);
+
+						vec3 fade_xyz = fade(Pf0);
+						vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
+						vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
+						float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
+						return 2.2 * n_xyz;
+					}
+
+					#define PI 3.1415926535897932384626433832795
+
+					uniform float time;
+					uniform float maxHeight;
+					uniform float speed;
+					uniform float distortCenter;
+					uniform float roadWidth;
+					varying float vDisplace;
+
+					varying float fogDepth;
+
+					void main(){
+
+						float t = time * speed;
+						float wRoad = distortCenter;
+						float wRoad2 = wRoad * 0.5;
+
+						float angleCenter = uv.y * PI*4.0;
+						angleCenter += t * 0.9;
+
+						float centerOff = (
+							sin(angleCenter) +
+							sin(angleCenter*0.5)
+						) * wRoad;
+
+
+						vec3 noiseIn = vec3(uv, 1.0)*10.0;
+						float noise = cnoise(vec3(noiseIn.x, noiseIn.y + t, noiseIn.z));
+						noise += 1.0;
+						float h = noise;
+						float angle = (uv.x - centerOff) * PI;
+						float f = abs(cos(angle));
+						h *= pow(f, 1.5 + roadWidth);
+
+
+						vDisplace = h;
+
+
+						h*=maxHeight;
+
+						vec3 transformed = vec3( position.x, position.y, position.z + h );
+
+
+						vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
+						gl_Position = projectionMatrix * mvPosition;
+
+						fogDepth = -mvPosition.z;
+
+					}
+
+				</script>
+        <script id="custom-fragment" type="x-shader/x-fragment">
+					uniform float time;
+					uniform vec3 color;
+					uniform sampler2D pallete;
+					varying float vDisplace;
+
+					uniform vec3 fogColor;
+					uniform float fogNear;
+					uniform float fogFar;
+					varying float fogDepth;
+
+					void main(){
+
+						vec2 stripPos = vec2( 0.0, vDisplace );
+						vec4 stripColor = texture2D( pallete, stripPos );
+						stripColor *= pow(1.0-vDisplace, 1.0);
+
+						gl_FragColor = stripColor;
+
+						#ifdef USE_FOG
+							float fogFactor = smoothstep( fogNear, fogFar, fogDepth );
+							gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+						#endif
+					}
+
+				</script>
+        <h2 class="content__title" id="welcome">Welcome to my portfolio!</h2>
+        <p class="content__subtitle" id="exp">For the best experience use computer</p>
+    </div>
+    <div class="overlay"></div>
+</header>
+<section>
+    <div class="container">
+        <div class="row mt-5 pt-5">
+            <div class="col-12 mt-5 pt-5">
+                <h1 class="title wow slideInUp" id="tech">Technologies I use</h1>
+            </div>
+            <div class="col">
+                <div class="row p-3 pl-5 mt-3">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-3 wow flipInX" >
+                        <img src="images/html.png" width="150" alt="">
+                        <h3 class="text-white">HTML</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-3 wow flipInX" data-wow-delay="0.7s">
+                        <img src="images/css.png" width="150" alt="">
+                        <h3 class="text-white">CSS</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-3 wow flipInX" data-wow-delay="0.9s">
+                        <img src="images/js.png" width="150" alt="">
+                        <h3 class="text-white">JavaScript</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInX" data-wow-delay="1.1s">
+                        <img src="images/bootstrap.png" width="150" alt="">
+                        <h3 class="text-white">Bootsrap</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInX" data-wow-delay="1.3s">
+                        <img src="images/sass.png" width="150" alt="">
+                        <h3 class="text-white">SASS</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInX" data-wow-delay="1.5s">
+                        <img src="images/jquery.png" width="150" alt="">
+                        <h3 class="text-white">jQuery</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-12 mt-5 pt-5">
+                <h1 class="title wow slideInUp" id="pros">Pros of working with me</h1>
+            </div>
+            <div class="col">
+                <div class="row p-3 pl-5 mt-3">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInY" >
+                        <img src="images/recommended.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="quality">Quality</h4>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInY" data-wow-delay="0.7s">
+                        <img src="images/stopwatch.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="time">Time saving</h4>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-4 wow flipInY" data-wow-delay="0.9s">
+                        <img src="images/piggy-bank.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="price">Good prices</h4>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-5 wow flipInY" data-wow-delay="1.1s">
+                        <img src="images/team.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="communication">Friendly communication</h4>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-5 wow flipInY" data-wow-delay="1.3s">
+                        <img src="images/responsive-symbol-with-a-widescreen-monitor-a-cellphone-and-a-tablet.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="responsive">Responsive web-pages</h4>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-center mt-5 wow flipInY" data-wow-delay="1.5s">
+                        <img src="images/web-settings.png" width="100" alt="">
+                        <h4 class="text-white mt-2" id="well-construction">Well-coding</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-12 mt-5 pt-5">
+                <h1 class="title wow slideInUp" id="projects">My projects</h1>
+            </div>
+            <div class="col-12 mt-4">
+                <div class="row mt-4 mb-5">
+                    <div class="col-12 mb-5">
+                        <h1 id="h1">
+                            <span id="k">c</span>
+                            <span id="l">o</span>
+                            <span id="m">m</span>
+                            <span id="n">i</span>
+                            <span id="o">n</span>
+                            <span id="p">g</span>
+                            </br>
+                            <span id="q"></span>
+                            <span id="r">s</span>
+                            <span id="s">o</span>
+                            <span id="t">o</span>
+                            <span id="u">n</span>
+                            <span id="v">...</span>
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+            <div class="contents">
+                <div class="contents__container">
+                    <p class="contents__container__text" id="hello">
+                        Hello
+                    </p>
+
+                    <ul class="contents__container__list">
+                        <li class="contents__container__list__item" id="visitors">visitors !</li>
+                        <li class="contents__container__list__item" id="world">world !</li>
+                        <li class="contents__container__list__item" id="users">users !</li>
+                        <li class="contents__container__list__item" id="everybody">everybody!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-12 mt-5 pt-5">
+                <h1 class="title wow slideInUp mt-5 pt-5" id="abtMyself">About myself</h1>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 imgProfile text-center pt-5 wow zoomIn">
+                <img src="images/5.jpg" width="150">
+            </div>
+            <div class="col-4 pt-5 resume">
+                <ul class="list-unstyled text-white font-weight-bold">
+                    <li class="wow zoomIn"><h3 id="w" class="resume">First name:</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.1s"><h3 id="x" class="resume">Last name:</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.2s"><h3 id="y" class="resume">Age:</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.3s"><h3 id="z" class="resume">Occupation:</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.4s"><h3 id="aa" class="resume">Languages:</h3></li>
+                </ul>
+            </div>
+            <div class="col-4 pt-5 resume">
+                <ul class="list-unstyled text-white font-weight-normal">
+                    <li class="wow zoomIn"><h3 id="ab" class="resume">Khasanboy</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.1s"><h3 id="ac" class="resume">Tadjibaev</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.2s"><h3 id="ad" class="resume">18</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.3s"><h3 id="ae" class="resume">Student</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.4s"><h3 id="af" class="resume">Uzbek</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.5s"><h3 id="ag" class="resume">English</h3></li>
+                    <li class="wow zoomIn" data-wow-delay="0.6s"><h3 id="ah" class="resume">Russian</h3></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-12 mt-5 pt-5">
+                <h1 class="title wow slideInUp mb-4" id="contactMe">Contact me</h1>
+            </div>
+            <div class="col-md-5 offset-md-1 offset-lg-1 col-lg-5 col-sm-12 text-right mt-5 wow jello">
+                <div class="contactSpan text-white svg-wrapper text-center">
+                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="shape" height="60" width="320" />
+                    </svg>
+                    <a class="text aLink" href="https://t.me/khassanboi">
+                        <i class="fab fa-telegram-plane">../khassanboi</i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-12 mt-5 wow jello">
+                <div class="contactSpan text-white svg-wrapper text-center">
+                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="shape" height="60" width="320" />
+                    </svg>
+                    <a class="text aLink" href="https://www.instagram.com/khassanboi/">
+                        <i class="fab fa-instagram">../khassanboi</i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 offset-md-1 offset-lg-1 col-lg-5 col-sm-12 mt-5 wow jello">
+                <div class="contactSpan text-white svg-wrapper text-center">
+                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="shape" height="60" width="320" />
+                    </svg>
+                    <a href="mailto:khassanboi@gmail.com" class="text aLink mailLink">
+                        khassanboi@gmail.com
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-12 mt-5 wow jello">
+                <div class="contactSpan text-white svg-wrapper text-center">
+                    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="shape" height="60" width="320" />
+                    </svg>
+                    <div class="text aLink mailLink">
+                        <i class="fa fa-phone">+998 99 977 00 70</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="text-center my-5 py-5">
+    <div class="row" id="footerRow">
+        <div class="col-12 mt-5 pt-5">
+            <h5 class="text-white mt-5 pt-5" id="madeWith">Made with</h5>
+        </div>
+        <div class="col-1 offset-5 text-center mt-2 pb-5 mb-5">
+            <div id="wrapper">
+                <div id="pulsingheart"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>document.documentElement.className = "js";
+var supportsCssVars = function () {
+    var e, t = document.createElement("style");
+    return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e
+};
+</script>
+<script src="js/vendor/three.min.js"></script>
+<script src="js/vendor/Sky.js"></script>
+<script src="js/vendor/hammer.min.js"></script>
+<script src="js/vendor/charming.min.js"></script>
+<script src="js/vendor/TweenMax.min.js"></script>
+<script src="js/demo1.js"></script>
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script src="js/jQuery.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/style.js"></script>
+</body>
+</html>
