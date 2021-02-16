@@ -1,0 +1,244 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9.5rem;
+    padding: 0 8.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(20px);
+    z-index: 10;
+
+    .nav {
+        max-width: 100%;
+        height: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &--logo-left,
+            &--logo-right {
+                height: 6.7rem;
+                transition: all 1s;
+            }
+
+            &--logo-right {
+                margin-left: -1rem;
+            }
+
+            &--details {
+                width: 105%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 1s;
+
+                &-socials {
+                    width: 35%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    svg {
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        fill: $color-primary;
+                    }
+                }
+
+                &-phone {
+                    font-size: 1.6rem;
+                    color: $color-primary;
+                }
+            }
+        }
+
+        &__list {
+            width: 65%;
+            height: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            line-height: 9.5rem;
+            overflow: hidden;
+            backface-visibility: hidden;
+            transition: all 1s;
+
+            &--item {
+                padding: 0 1rem;
+                position: relative;
+
+                a {
+                    color: #fff;
+                    font-size: 1.6rem;
+                    text-transform: uppercase;
+                    z-index: 1;
+                    position: relative;
+                    transition: all 1s;
+                }
+
+                &:last-of-type {
+                    a {
+                        color: $color-primary;
+                    }
+                }
+
+                span.shade {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(180deg, rgba(187, 128, 103, 0.05395661682641806) 0%, rgba(187, 128, 103, 0.24723392775078779) 100%);
+                    transform: translateY(100%);
+                    transition: all 0.3s;
+                }
+
+                &:hover {
+                    & span.shade {
+                        transform: translateY(0);
+                    }
+
+                    & > .nav__list--item-content {
+                        top: 100%;
+                        opacity: 1;
+                        transition-delay: 0;
+                    }
+                }
+            }
+
+            &--item-content {
+                position: fixed;
+                padding: 2rem 10rem;
+                width: 100vw;
+                top: -450%;
+                left: 0;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 990;
+                display: flex;
+                justify-content: space-around;
+                opacity: 0;
+                transition: top 0s, opacity 0.5s;
+                transition-delay: 0.2s;
+
+                ul {
+                    list-style: none;
+
+                    li.title {
+                        color: #fff;
+                        font-weight: 600;
+                        font-size: 1.6rem;
+                    }
+
+                    li {
+                        line-height: 1.6rem;
+                        padding: 1.5rem 0;
+
+                        a {
+                            color: #7c7c7c;
+                            font-size: 1.6rem;
+                            position: relative;
+                            transition: all 0.4s;
+                            text-transform: capitalize;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                width: 0;
+                                height: 1px;
+                                bottom: -1rem;
+                                left: 0;
+                                background-color: #fff;
+                                transition: all 0.4s;
+                            }
+                        }
+
+                        &:hover {
+                            a {
+                                color: #fff;
+                                padding-left: 1.5rem;
+
+                                &::before {
+                                    width: 110%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .img-div {
+                    position: relative;
+                    width: 22rem;
+                    height: 13rem;
+                    overflow: hidden;
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: auto;
+                    }
+
+                    span {
+                        background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 1.6rem;
+                        color: #fff;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: flex-end;
+                        padding-left: 3rem;
+                        transition: all 0.4s;
+
+                        &:hover {
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.scrolled {
+            .nav__wrapper {
+                &--logo-left {
+                    height: 5.4rem;
+                }
+
+                &--logo-right {
+                    opacity: 0;
+                    pointer-events: hidden;
+                }
+
+                &--details {
+                    opacity: 0;
+                    pointer-events: hidden;
+                }
+            }
+
+            .nav__list {
+                width: 55%;
+
+                &--item {
+                    a {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

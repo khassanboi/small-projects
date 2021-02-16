@@ -1,0 +1,51 @@
+// COLORS
+
+$color-primary: #bb8067;
+
+// BREAKPOINTS
+
+$bp-xl: 81.25em; // 1300px
+$bp-lg: 62.5em; // 1000px
+$bp-md: 50em; //  800px
+$bp-sm: 37.5em; //  600px
+
+// NORMALIZING THE OVERALL LAYOUT BY IGNORING DEFAULT PROPERTIES
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //10px
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+
+    @media only screen and (max-width: $bp-xl) {
+        font-size: 50%;
+    }
+
+    @media only screen and (max-width: $bp-lg) {
+        font-size: 45%;
+    }
+
+    @media only screen and (max-width: $bp-md) {
+        font-size: 40%;
+    }
+
+    @media only screen and (max-width: $bp-sm) {
+        font-size: 35%;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
