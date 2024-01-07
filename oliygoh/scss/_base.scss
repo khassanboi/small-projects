@@ -1,0 +1,59 @@
+// COLORS
+
+$color-primary: #2681ff;
+$color-accent: #f4900c;
+// BREAKPOINTS
+
+$bp-xl: 90em; // 1440px
+$bp-lg: 64em; // 1024px
+$bp-md: 48em; //  768px
+$bp-sm: 30em; //  360px
+
+// NORMALIZING THE OVERALL LAYOUT BY IGNORING DEFAULT PROPERTIES
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //10px
+    overflow-x: hidden;
+    font-family: "Inter", sans-serif;
+
+    @media only screen and (max-width: $bp-md) {
+        font-size: 46.875%; // 7.5px
+    }
+}
+
+body {
+    overflow-x: hidden;
+    padding-top: 7.6rem;
+}
+
+header,
+nav,
+section.pinned,
+section.scholarships,
+summary,
+main,
+footer {
+    width: 100%;
+    padding: 1.5rem 9.2rem;
+
+    @media only screen and (max-width: $bp-lg) {
+        padding: 1.5rem 2rem;
+    }
+
+    @media only screen and (max-width: $bp-md) {
+        padding: 2rem 2rem;
+    }
+}
