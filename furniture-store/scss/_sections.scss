@@ -128,4 +128,47 @@
   &__list-item-link {
     margin-top: 2rem;
   }
+
+  @media only screen and (min-width: $bp-md) {
+    &__list-item-description {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  @media only screen and (max-width: $bp-md) {
+    &__container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    &__gallery {
+      width: 100%;
+      height: 40rem;
+      box-shadow: 0 0 1rem rgba($color: #333, $alpha: 0.2);
+    }
+
+    &__list {
+      width: 100%;
+      gap: 3rem;
+    }
+
+    &__list-item {
+      box-shadow: 0 0 1rem rgba($color: #333, $alpha: 0.2);
+    }
+
+    &__list-item-img {
+      width: 20%;
+      height: auto;
+    }
+  }
+
+  @media only screen and (max-width: $bp-sm) {
+    &__list-item-img {
+      width: 30%;
+    }
+  }
 }
