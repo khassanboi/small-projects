@@ -33,16 +33,6 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
-
-    &__list-item-img {
-      width: 24rem;
-    }
-  }
-
-  @media only screen and (max-width: $bp-xs) {
-    &__list-item-img {
-      width: 18rem;
-    }
   }
 }
 
@@ -91,16 +81,18 @@
     &__list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-    }
-
-    &__list-item-img {
-      width: 24rem;
+      padding: 2rem;
     }
   }
 
   @media only screen and (max-width: $bp-xs) {
-    &__list-item-img {
-      width: 18rem;
+    &__list {
+      padding: 0rem;
+      gap: 2rem;
+    }
+
+    &__product-img {
+      transform: translate(25%, 10%) scale(150%);
     }
   }
 }

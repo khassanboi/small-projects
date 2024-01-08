@@ -105,11 +105,6 @@ ul {
   transform: translate(50%);
   background-color: #4b4b4b;
 }
-@media only screen and (max-width: 48em) {
-  .h-2 {
-    font-size: 2.8rem;
-  }
-}
 
 .h-3 {
   width: 90%;
@@ -360,14 +355,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  .partners__list-item-img {
-    width: 24rem;
-  }
-}
-@media only screen and (max-width: 30em) {
-  .partners__list-item-img {
-    width: 18rem;
-  }
 }
 
 .products {
@@ -410,13 +397,15 @@ ul {
   .products__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-  .products__list-item-img {
-    width: 24rem;
+    padding: 2rem;
   }
 }
 @media only screen and (max-width: 30em) {
-  .products__list-item-img {
-    width: 18rem;
+  .products__list {
+    padding: 0rem;
+    gap: 2rem;
+  }
+  .products__product-img {
+    transform: translate(25%, 10%) scale(150%);
   }
 }/*# sourceMappingURL=main.css.map */
