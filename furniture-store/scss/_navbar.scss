@@ -3,23 +3,31 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0.5rem 1rem rgba($color-accent, 0.2);
+  padding: 2rem 5rem;
 
-  &__logo {
-    font-size: 2.5rem;
+  &__logo-img {
+    width: 7rem;
     color: $color-accent;
     transition: all 0.2s;
+    filter: invert(26%) sepia(4%) saturate(18%) hue-rotate(319deg)
+      brightness(93%) contrast(81%);
 
     &:hover {
-      text-shadow: 0 0 5rem rgba($color-accent, 0.8);
+      filter: invert(69%) sepia(23%) saturate(1153%) hue-rotate(346deg)
+        brightness(103%) contrast(101%);
     }
   }
 
   &__list {
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+
+    @media only screen and (max-width: $bp-sm) {
+      width: 50%;
+    }
 
     @media only screen and (max-width: $bp-xs) {
       display: none;
@@ -30,10 +38,26 @@
     font-size: 1.6rem;
     color: $color-primary;
     transition: all 0.2s;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 20%;
+      height: 1px;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $color-primary;
+      transition: all 0.2s;
+    }
 
     &:hover {
       color: $color-accent;
-      border-bottom: 1px solid $color-accent;
+
+      &::after {
+        background-color: $color-accent;
+        width: 60%;
+      }
     }
   }
 }

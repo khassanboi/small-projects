@@ -14,7 +14,7 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   overflow-x: hidden;
-  font-family: "Roboto", sans-serif;
+  font-family: "Mukta", sans-serif;
 }
 @media only screen and (max-width: 64em) {
   html {
@@ -50,6 +50,7 @@ footer {
   font-size: 4rem;
   display: flex;
   flex-direction: column;
+  font-family: "Josefin Sans", sans-serif;
 }
 .h-1--main {
   color: #ffad4c;
@@ -83,9 +84,10 @@ footer {
   color: white;
   text-transform: uppercase;
   border-radius: 0.5rem;
-  font-weight: 600;
   transition: all 0.2s;
   margin: 1rem 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
 }
 .btn--accent {
   background-color: #ffad4c;
@@ -98,7 +100,7 @@ footer {
 }
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5rem 1rem rgba(75, 75, 75, 0.3);
 }
 
 .navbar {
@@ -106,21 +108,28 @@ footer {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0.5rem 1rem rgba(255, 173, 76, 0.2);
+  padding: 2rem 5rem;
 }
-.navbar__logo {
-  font-size: 2.5rem;
+.navbar__logo-img {
+  width: 7rem;
   color: #ffad4c;
   transition: all 0.2s;
+  filter: invert(26%) sepia(4%) saturate(18%) hue-rotate(319deg) brightness(93%) contrast(81%);
 }
-.navbar__logo:hover {
-  text-shadow: 0 0 5rem rgba(255, 173, 76, 0.8);
+.navbar__logo-img:hover {
+  filter: invert(69%) sepia(23%) saturate(1153%) hue-rotate(346deg) brightness(103%) contrast(101%);
 }
 .navbar__list {
-  width: 50%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
+}
+@media only screen and (max-width: 40em) {
+  .navbar__list {
+    width: 50%;
+  }
 }
 @media only screen and (max-width: 30em) {
   .navbar__list {
@@ -131,10 +140,24 @@ footer {
   font-size: 1.6rem;
   color: #4b4b4b;
   transition: all 0.2s;
+  position: relative;
+}
+.navbar__list-item-link::after {
+  content: "";
+  width: 20%;
+  height: 1px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #4b4b4b;
+  transition: all 0.2s;
 }
 .navbar__list-item-link:hover {
   color: #ffad4c;
-  border-bottom: 1px solid #ffad4c;
+}
+.navbar__list-item-link:hover::after {
+  background-color: #ffad4c;
+  width: 60%;
 }
 
 .header {
@@ -156,9 +179,9 @@ footer {
   justify-content: space-around;
   gap: 3rem;
   border-radius: 1rem;
-  background-color: rgba(248, 248, 248, 0.77);
-  -webkit-backdrop-filter: blur(4.5px);
-          backdrop-filter: blur(4.5px);
+  background-color: rgba(248, 248, 248, 0.6);
+  -webkit-backdrop-filter: blur(0.4rem);
+          backdrop-filter: blur(0.4rem);
   transform: translate(0, -50%);
 }
 .header__buttons {
