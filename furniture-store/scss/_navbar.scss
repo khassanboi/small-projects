@@ -20,10 +20,8 @@
 
   &__list {
     width: 40%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style: none;
 
     @media only screen and (max-width: $bp-sm) {
       width: 50%;
