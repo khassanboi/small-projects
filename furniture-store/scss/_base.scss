@@ -1,0 +1,51 @@
+// COLORS
+$color-primary: #4b4b4b;
+$color-accent: #ffad4c;
+
+// BREAKPOINTS
+$bp-xl: 90em;
+$bp-lg: 64em;
+$bp-md: 48em;
+$bp-sm: 30em;
+
+// NORMALIZING THE OVERALL LAYOUT BY IGNORING DEFAULT PROPERTIES
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //10px
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+
+  @media only screen and (max-width: $bp-md) {
+    font-size: 46.875%; // 7.5px
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background: rgb(255, 250, 240);
+}
+
+nav,
+header,
+section,
+main,
+footer {
+  width: 100%;
+  padding: 3rem 5rem;
+
+  @media only screen and (max-width: $bp-md) {
+    padding: 2rem 3rem;
+  }
+}

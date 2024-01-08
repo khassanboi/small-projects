@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+@media only screen and (max-width: 48em) {
+  html {
+    font-size: 46.875%;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background: rgb(255, 250, 240);
+}
+
+nav,
+header,
+section,
+main,
+footer {
+  width: 100%;
+  padding: 3rem 5rem;
+}
+@media only screen and (max-width: 48em) {
+  nav,
+  header,
+  section,
+  main,
+  footer {
+    padding: 2rem 3rem;
+  }
+}/*# sourceMappingURL=main.css.map */
