@@ -67,6 +67,23 @@ ul {
   display: flex;
 }
 
+.bg-effect::after {
+  position: absolute;
+  top: -50%;
+  content: "";
+  width: 70rem;
+  height: 70rem;
+  border-radius: 612px;
+  background: rgba(255, 173, 76, 0.3);
+  filter: blur(209.5px);
+}
+.bg-effect--left::after {
+  left: -10%;
+}
+.bg-effect--right::after {
+  right: -10%;
+}
+
 .h-1 {
   font-size: 4rem;
   display: flex;
@@ -338,17 +355,6 @@ ul {
 }
 .partners__list-item-img {
   width: 80%;
-}
-.partners::after {
-  position: absolute;
-  top: -50%;
-  left: -10%;
-  content: "";
-  width: 50rem;
-  height: 50rem;
-  border-radius: 612px;
-  background: rgba(255, 173, 76, 0.4);
-  filter: blur(209.5px);
 }
 @media only screen and (max-width: 48em) {
   .partners__list {

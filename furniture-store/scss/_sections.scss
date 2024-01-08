@@ -16,18 +16,6 @@
     width: 80%;
   }
 
-  &::after {
-    position: absolute;
-    top: -50%;
-    left: -10%;
-    content: "";
-    width: 50rem;
-    height: 50rem;
-    border-radius: 612px;
-    background: rgba(255, 173, 76, 0.4);
-    filter: blur(209.5px);
-  }
-
   @media only screen and (max-width: $bp-md) {
     &__list {
       display: grid;
