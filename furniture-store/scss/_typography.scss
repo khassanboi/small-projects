@@ -1,0 +1,60 @@
+.h-1 {
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  &--main {
+    color: $color-accent;
+    text-transform: uppercase;
+  }
+
+  &--sub {
+    color: $color-primary;
+    font-size: 50%;
+    text-transform: capitalize;
+    font-style: italic;
+  }
+}
+
+.p {
+  font-size: 1.4rem;
+  color: $color-primary;
+
+  &--larger {
+    font-size: 1.8rem;
+    padding-right: 5rem;
+  }
+}
+
+.btn {
+  width: fit-content;
+  font-size: 1.4rem;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin: 1rem 0;
+
+  &--accent {
+    background-color: $color-accent;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+  }
+
+  &--secondary {
+    margin-left: 2rem;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+}

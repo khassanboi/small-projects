@@ -3,10 +3,11 @@ $color-primary: #4b4b4b;
 $color-accent: #ffad4c;
 
 // BREAKPOINTS
-$bp-xl: 90em;
-$bp-lg: 64em;
-$bp-md: 48em;
-$bp-sm: 30em;
+$bp-xl: 90em; // 1440px
+$bp-lg: 64em; // 1024px
+$bp-md: 48em; // 768px
+$bp-sm: 40em; // 640px
+$bp-xs: 30em; // 480px
 
 // NORMALIZING THE OVERALL LAYOUT BY IGNORING DEFAULT PROPERTIES
 *,
@@ -27,8 +28,16 @@ html {
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 
+  @media only screen and (max-width: $bp-lg) {
+    font-size: 50%; // 8px
+  }
+
   @media only screen and (max-width: $bp-md) {
-    font-size: 46.875%; // 7.5px
+    font-size: 43.75%; // 7.5px
+  }
+
+  @media only screen and (max-width: $bp-sm) {
+    font-size: 40.625%; // 6.5px
   }
 }
 
@@ -44,8 +53,4 @@ main,
 footer {
   width: 100%;
   padding: 3rem 5rem;
-
-  @media only screen and (max-width: $bp-md) {
-    padding: 2rem 3rem;
-  }
 }

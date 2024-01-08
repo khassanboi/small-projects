@@ -21,7 +21,7 @@
     align-items: center;
     list-style: none;
 
-    @media only screen and (max-width: $bp-sm) {
+    @media only screen and (max-width: $bp-xs) {
       display: none;
     }
   }
