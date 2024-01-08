@@ -24,7 +24,7 @@
   font-family: "Josefin Sans", sans-serif;
   text-transform: capitalize;
   text-align: center;
-  margin-bottom: 3rem;
+  margin: 4rem 0;
   position: relative;
 
   &::after {
@@ -36,6 +36,26 @@
     right: 50%;
     transform: translate(50%);
     background-color: $color-primary;
+  }
+
+  @media only screen and (max-width: $bp-md) {
+    font-size: 2.8rem;
+  }
+}
+
+.h-3 {
+  width: 90%;
+  color: $color-primary;
+  font-size: 2.4rem;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @media only screen and (max-width: $bp-lg) {
+    font-size: 1.8rem;
   }
 }
 
@@ -61,7 +81,7 @@
   text-transform: uppercase;
   border-radius: 0.5rem;
   transition: all 0.2s;
-  margin: 1rem 0;
+  margin-top: 1rem;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 700;
 
@@ -81,4 +101,26 @@
     transform: translateY(-3px);
     box-shadow: 0 0.5rem 1rem rgba($color-primary, 0.3);
   }
+
+  @media only screen and (max-width: $bp-lg) {
+    font-size: 1.2rem;
+  }
+}
+
+.price-tag {
+  width: min-content;
+  display: inline-flex;
+  padding: 0.8rem 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(2px);
+  color: $color-accent;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 0.5px solid $color-accent;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

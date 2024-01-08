@@ -1,9 +1,4 @@
 .partners {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-
   &__list {
     width: 100%;
     display: flex;
@@ -18,19 +13,78 @@
   }
 
   &__list-item-img {
-    width: 20rem;
+    width: 80%;
   }
 
   &::after {
     position: absolute;
-    top: 80%;
-    left: 0;
+    top: -50%;
+    left: -10%;
     content: "";
     width: 50rem;
     height: 50rem;
     border-radius: 612px;
     background: rgba(255, 173, 76, 0.4);
     filter: blur(209.5px);
+  }
+
+  @media only screen and (max-width: $bp-md) {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__list-item-img {
+      width: 24rem;
+    }
+  }
+
+  @media only screen and (max-width: $bp-xs) {
+    &__list-item-img {
+      width: 18rem;
+    }
+  }
+}
+
+.products {
+  width: 100%;
+
+  &__list {
+    width: 100%;
+    display: flex;
+    gap: 5rem;
+    justify-content: space-around;
+    padding: 3rem;
+  }
+
+  &__product {
+    padding: 2rem;
+    background-color: #ffecd6;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__product-category {
+    color: rgba($color: #333, $alpha: 0.3);
+  }
+
+  &__product-img {
+    object-fit: cover;
+    transform: translate(20%, 10%) scale(150%);
+    transition: all 0.3s;
+    z-index: 1;
+  }
+
+  &__product:hover &__product-img {
+    filter: drop-shadow(0.4rem 0.4rem 1rem rgba($color-accent, 0.6));
+  }
+
+  &__product-btn {
+    align-self: flex-start;
+    z-index: 2;
   }
 
   @media only screen and (max-width: $bp-md) {
