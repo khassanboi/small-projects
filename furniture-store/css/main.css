@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -57,7 +58,8 @@ footer {
   }
 }
 
-section {
+section,
+main {
   flex-direction: column;
   position: relative;
 }
@@ -69,13 +71,14 @@ ul {
 
 .bg-effect::after {
   position: absolute;
-  top: -50%;
+  top: -20rem;
   content: "";
   width: 70rem;
   height: 70rem;
   border-radius: 612px;
   background: rgba(255, 173, 76, 0.3);
   filter: blur(209.5px);
+  z-index: -1;
 }
 .bg-effect--left::after {
   left: -10%;
@@ -136,7 +139,7 @@ ul {
 }
 @media only screen and (max-width: 64em) {
   .h-3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -147,6 +150,9 @@ ul {
 .p--larger {
   font-size: 1.8rem;
   padding-right: 5rem;
+}
+.p--light {
+  color: white;
 }
 
 .btn {
@@ -181,6 +187,37 @@ ul {
 }
 @media only screen and (max-width: 64em) {
   .btn {
+    font-size: 1.2rem;
+  }
+}
+
+.link {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.4rem;
+  padding-right: 2rem;
+  color: #4b4b4b;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  position: relative;
+}
+.link::after {
+  content: "→";
+  position: absolute;
+  right: 0.3rem;
+  top: -0.3rem;
+  transition: all 0.2s;
+}
+.link:hover {
+  padding-left: 1rem;
+}
+.link:hover::after {
+  right: -0.5rem;
+}
+@media only screen and (max-width: 64em) {
+  .link {
     font-size: 1.2rem;
   }
 }
@@ -381,6 +418,7 @@ ul {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
 }
 .products__product-category {
   color: rgba(51, 51, 51, 0.3);
@@ -414,4 +452,40 @@ ul {
   .products__product-img {
     transform: translate(25%, 10%) scale(150%);
   }
+}
+
+.our-work__container {
+  width: 100%;
+  height: 50rem;
+  display: flex;
+  gap: 3rem;
+}
+.our-work__gallery {
+  width: 50%;
+  border-radius: 1rem;
+  box-shadow: -3rem 3rem #ffecd6;
+  background-image: url(../img/our-work-hero.webp);
+  background-size: cover;
+}
+.our-work__list {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.our-work__list-item {
+  height: 30%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fbf7f2;
+  border-radius: 1rem;
+  display: flex;
+}
+.our-work__list-item-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+.our-work__list-item-link {
+  margin-top: 2rem;
 }/*# sourceMappingURL=main.css.map */

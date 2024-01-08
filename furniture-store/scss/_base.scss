@@ -61,7 +61,8 @@ footer {
   }
 }
 
-section {
+section,
+main {
   flex-direction: column;
   position: relative;
 }
@@ -74,13 +75,14 @@ ul {
 .bg-effect {
   &::after {
     position: absolute;
-    top: -50%;
+    top: -20rem;
     content: "";
     width: 70rem;
     height: 70rem;
     border-radius: 612px;
     background: rgba(255, 173, 76, 0.3);
     filter: blur(209.5px);
+    z-index: -1;
   }
   &--left::after {
     left: -10%;

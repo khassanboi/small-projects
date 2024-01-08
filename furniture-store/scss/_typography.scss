@@ -51,7 +51,7 @@
   overflow: hidden;
 
   @media only screen and (max-width: $bp-lg) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -62,6 +62,10 @@
   &--larger {
     font-size: 1.8rem;
     padding-right: 5rem;
+  }
+
+  &--light {
+    color: white;
   }
 }
 
@@ -96,6 +100,38 @@
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 0.5rem 1rem rgba($color-primary, 0.3);
+  }
+
+  @media only screen and (max-width: $bp-lg) {
+    font-size: 1.2rem;
+  }
+}
+
+.link {
+  width: fit-content;
+  font-size: 1.4rem;
+  padding-right: 2rem;
+  color: $color-primary;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: "\2192";
+    position: absolute;
+    right: 0.3rem;
+    top: -0.3rem;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    padding-left: 1rem;
+
+    &::after {
+      right: -0.5rem;
+    }
   }
 
   @media only screen and (max-width: $bp-lg) {
