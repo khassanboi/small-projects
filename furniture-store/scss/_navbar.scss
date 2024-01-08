@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0.5rem 1rem rgba($color-accent, 0.2);
+
+  &__logo {
+    font-size: 2.5rem;
+    color: $color-accent;
+    transition: all 0.2s;
+
+    &:hover {
+      text-shadow: 0 0 5rem rgba($color-accent, 0.8);
+    }
+  }
+
+  &__list {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+    @media only screen and (max-width: $bp-sm) {
+      display: none;
+    }
+  }
+
+  &__list-item-link {
+    font-size: 1.6rem;
+    color: $color-primary;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-accent;
+      border-bottom: 1px solid $color-accent;
+    }
+  }
+}

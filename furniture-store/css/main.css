@@ -43,4 +43,40 @@ footer {
   footer {
     padding: 2rem 3rem;
   }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0.5rem 1rem rgba(255, 173, 76, 0.2);
+}
+.navbar__logo {
+  font-size: 2.5rem;
+  color: #ffad4c;
+  transition: all 0.2s;
+}
+.navbar__logo:hover {
+  text-shadow: 0 0 5rem rgba(255, 173, 76, 0.8);
+}
+.navbar__list {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+@media only screen and (max-width: 30em) {
+  .navbar__list {
+    display: none;
+  }
+}
+.navbar__list-item-link {
+  font-size: 1.6rem;
+  color: #4b4b4b;
+  transition: all 0.2s;
+}
+.navbar__list-item-link:hover {
+  color: #ffad4c;
+  border-bottom: 1px solid #ffad4c;
 }/*# sourceMappingURL=main.css.map */
