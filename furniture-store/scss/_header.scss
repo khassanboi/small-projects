@@ -27,9 +27,6 @@
 
   &__hero {
     width: 60%;
-  }
-
-  &__hero {
     display: flex;
     align-items: center;
   }
@@ -70,6 +67,7 @@
 
     &__text-box {
       width: 100%;
+      box-shadow: 0 0 5rem rgba($color-primary, 0.1);
     }
 
     &__hero {
