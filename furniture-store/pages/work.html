@@ -49,7 +49,34 @@
     <main class="work">
       <h2 class="h-2">Work Item Title</h2>
       <div class="work__container">
-        <div class="work__gallery"></div>
+        <div class="work__gallery gallery">
+          <div class="gallery__slide">
+            <img
+              src="../img/our-work-gallery-1.webp"
+              class="gallery__slide-img"
+            />
+          </div>
+          <div class="gallery__slide">
+            <img
+              src="../img/our-work-gallery-2.webp"
+              class="gallery__slide-img"
+            />
+          </div>
+          <div class="gallery__slide">
+            <img
+              src="../img/our-work-gallery-3.webp"
+              class="gallery__slide-img"
+            />
+          </div>
+          <a class="gallery__prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="gallery__next" onclick="plusSlides(1)">&#10095;</a>
+          <div class="gallery__dots" style="text-align: center">
+            <span class="gallery__dot" onclick="currentSlide(1)"></span>
+            <span class="gallery__dot" onclick="currentSlide(2)"></span>
+            <span class="gallery__dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
+
         <div class="work__description">
           <p class="p work__description-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -139,5 +166,6 @@
         </ul>
       </div>
     </footer>
+    <script src="../js/singleGallery.js"></script>
   </body>
 </html>

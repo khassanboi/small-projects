@@ -242,6 +242,73 @@ ul {
   overflow: hidden;
 }
 
+.gallery {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.gallery__slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.gallery__slide-img {
+  width: inherit;
+  height: inherit;
+}
+.gallery__prev, .gallery__next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  transform: translate(0, -50%);
+  padding: 1.5rem;
+  color: #ffad4c;
+  font-size: 2rem;
+  transition: padding 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.gallery__prev:hover, .gallery__next:hover {
+  padding-left: 1rem;
+}
+.gallery__next {
+  right: 0;
+}
+.gallery__next:hover {
+  padding-right: 1rem;
+}
+.gallery__dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+}
+.gallery__dot {
+  cursor: pointer;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin: 0 0.3rem;
+  background-color: rgba(75, 75, 75, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.5s;
+}
+.gallery__dot:hover, .gallery__dot--active {
+  background-color: #ffad4c;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -473,8 +540,7 @@ ul {
   width: 50%;
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
-  background-image: url(../img/our-work-hero.webp);
-  background-size: cover;
+  max-height: 50rem;
 }
 .our-work__list {
   width: 50%;
@@ -519,7 +585,8 @@ ul {
   }
   .our-work__gallery {
     width: 100%;
-    height: 40rem;
+    max-height: 40vh;
+    height: 50rem;
     box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
   }
   .our-work__list {
@@ -542,7 +609,8 @@ ul {
 
 .work__container {
   width: 100%;
-  height: 50rem;
+  height: -moz-fit-content;
+  height: fit-content;
   display: flex;
   gap: 3rem;
   margin-bottom: 3rem;
@@ -554,8 +622,7 @@ ul {
   width: 50%;
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
-  background-image: url(../img/our-work-hero.webp);
-  background-size: cover;
+  max-height: 50rem;
 }
 .work__description {
   width: 50%;
@@ -565,6 +632,24 @@ ul {
   border-radius: 1rem;
   background-color: #fff;
   padding: 3rem;
+}
+@media only screen and (max-width: 64em) {
+  .work__gallery {
+    max-height: 45rem;
+  }
+}
+@media only screen and (max-width: 40em) {
+  .work__container {
+    flex-direction: column;
+  }
+  .work__gallery {
+    width: 100%;
+    max-height: 40vh;
+    height: 50rem;
+  }
+  .work__description {
+    width: 100%;
+  }
 }
 
 .contacts__container {
