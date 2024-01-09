@@ -29,7 +29,8 @@
 
   &__list {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 5rem;
     justify-content: space-around;
     padding: 3rem;
@@ -68,7 +69,6 @@
 
   @media only screen and (max-width: $bp-md) {
     &__list {
-      display: grid;
       grid-template-columns: repeat(2, 1fr);
       padding: 2rem;
     }
