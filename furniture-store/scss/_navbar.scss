@@ -4,6 +4,7 @@
   align-items: center;
   box-shadow: 0 0.2rem 1rem rgba($color-primary, 0.1);
   padding: 2rem 5rem;
+  z-index: 999;
 
   &__logo-img {
     width: 7rem;

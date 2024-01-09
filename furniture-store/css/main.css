@@ -248,6 +248,7 @@ ul {
   align-items: center;
   box-shadow: 0 0.2rem 1rem rgba(75, 75, 75, 0.1);
   padding: 2rem 5rem;
+  z-index: 999;
 }
 .navbar__logo-img {
   width: 7rem;
@@ -459,11 +460,15 @@ ul {
   height: 50rem;
   display: flex;
   gap: 3rem;
+  margin-bottom: 3rem;
+}
+.our-work__container--reverse {
+  flex-direction: row-reverse;
 }
 .our-work__gallery {
   width: 50%;
   border-radius: 1rem;
-  box-shadow: -3rem 3rem #ffecd6;
+  box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
   background-image: url(../img/our-work-hero.webp);
   background-size: cover;
 }
@@ -480,6 +485,7 @@ ul {
   background-color: #fbf7f2;
   border-radius: 1rem;
   display: flex;
+  box-shadow: 0 0 1rem rgba(51, 51, 51, 0.2);
 }
 .our-work__list-item-content {
   display: flex;
