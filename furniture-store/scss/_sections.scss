@@ -33,7 +33,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 5rem;
     justify-content: space-around;
-    padding: 3rem;
+    padding: 3rem 0;
   }
 
   &__product {
@@ -54,7 +54,7 @@
   &__product-img {
     object-fit: cover;
     transform: translate(20%, 10%) scale(150%);
-    transition: all 0.3s;
+    transition: filter 0.2s;
     z-index: 1;
   }
 
@@ -67,10 +67,15 @@
     z-index: 2;
   }
 
+  &__all-link {
+    margin-top: 2rem;
+    align-self: flex-end;
+  }
+
   @media only screen and (max-width: $bp-md) {
     &__list {
       grid-template-columns: repeat(2, 1fr);
-      padding: 2rem;
+      padding: 2rem 0;
     }
   }
 
@@ -136,6 +141,11 @@
     margin-top: 2rem;
   }
 
+  &__all-link {
+    margin-top: 2rem;
+    align-self: flex-end;
+  }
+
   @media only screen and (min-width: $bp-md) {
     &__list-item-description {
       overflow: hidden;
@@ -176,6 +186,82 @@
   @media only screen and (max-width: $bp-sm) {
     &__list-item-img {
       width: 30%;
+    }
+  }
+}
+
+.contacts {
+  &__container {
+    width: 100%;
+    height: 50rem;
+    display: flex;
+  }
+
+  &__map {
+    width: 50%;
+    border: none;
+    padding: 5rem;
+  }
+
+  &__map-iframe {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba($color: #333, $alpha: 0.2);
+  }
+
+  &__list {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem;
+  }
+
+  &__list-item {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  &__list-item-answer {
+    font-weight: 400;
+  }
+
+  &__list-item-link {
+    color: $color-primary;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  @media only screen and (max-width: $bp-lg) {
+    &__map {
+      width: 55%;
+      padding: 2rem;
+    }
+
+    &__list {
+      width: 45%;
+    }
+  }
+
+  @media only screen and (max-width: $bp-sm) {
+    &__container {
+      flex-direction: column;
+      gap: 5rem;
+      height: auto;
+    }
+
+    &__map {
+      width: 100%;
+      padding: 0;
+      height: 30rem;
+    }
+
+    &__list {
+      width: 100%;
+      padding: 0;
     }
   }
 }

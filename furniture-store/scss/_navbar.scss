@@ -51,6 +51,7 @@
       transition: all 0.2s;
     }
 
+    &--active,
     &:hover {
       color: $color-accent;
 
