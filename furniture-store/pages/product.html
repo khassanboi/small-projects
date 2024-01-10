@@ -28,26 +28,29 @@
           class="navbar__logo-img"
         />
       </a>
-      <ul class="navbar__list">
-        <li class="navbar__list-item">
-          <a href="../index.html" class="navbar__list-item-link">Home</a>
-        </li>
-        <li class="navbar__list-item">
-          <a
-            href="products.html"
-            class="navbar__list-item-link navbar__list-item-link--active"
-            >Products</a
-          >
-        </li>
-        <li class="navbar__list-item">
-          <a href="our-work.html" class="navbar__list-item-link">Our Work</a>
-        </li>
-        <li class="navbar__list-item">
-          <a href="contact-us.html" class="navbar__list-item-link"
-            >Contact Us</a
-          >
-        </li>
-      </ul>
+      <div class="navbar__container" id="navbar-container">
+        <ul class="navbar__list">
+          <li class="navbar__list-item">
+            <a href="../index.html" class="navbar__list-item-link">Home</a>
+          </li>
+          <li class="navbar__list-item">
+            <a
+              href="products.html"
+              class="navbar__list-item-link navbar__list-item-link--active"
+              >Products</a
+            >
+          </li>
+          <li class="navbar__list-item">
+            <a href="our-work.html" class="navbar__list-item-link">Our Work</a>
+          </li>
+          <li class="navbar__list-item">
+            <a href="contact-us.html" class="navbar__list-item-link"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+      <span class="fa fa-bars navbar__icon" id="navbar-menu-icon"></span>
     </nav>
 
     <main class="product">
@@ -177,5 +180,6 @@
       </div>
     </footer>
     <script src="../js/calculator.js"></script>
+    <script src="../js/navbar.js"></script>
   </body>
 </html>

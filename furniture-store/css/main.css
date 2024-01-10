@@ -44,7 +44,7 @@ section,
 main,
 footer {
   width: 100%;
-  padding: 5rem;
+  padding: 3rem 5rem;
   display: flex;
   align-items: center;
 }
@@ -314,7 +314,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0.2rem 1rem rgba(75, 75, 75, 0.1);
-  padding: 2rem 5rem;
+  padding: 1.5rem 3rem;
   z-index: 999;
 }
 .navbar__logo-img {
@@ -326,20 +326,17 @@ ul {
 .navbar__logo-img:hover {
   filter: invert(69%) sepia(23%) saturate(1153%) hue-rotate(346deg) brightness(103%) contrast(101%);
 }
-.navbar__list {
-  width: 40%;
-  justify-content: space-between;
-  align-items: center;
+.navbar__container {
+  width: 45%;
 }
 @media only screen and (max-width: 40em) {
-  .navbar__list {
+  .navbar__container {
     width: 50%;
   }
 }
-@media only screen and (max-width: 30em) {
-  .navbar__list {
-    display: none;
-  }
+.navbar__list {
+  justify-content: space-between;
+  align-items: center;
 }
 .navbar__list-item-link {
   font-size: 1.6rem;
@@ -365,9 +362,58 @@ ul {
   background-color: #ffad4c;
   width: 60%;
 }
+.navbar__icon {
+  font-size: 3rem;
+  color: #4b4b4b;
+  cursor: pointer;
+  display: none;
+}
 @media only screen and (max-width: 30em) {
   .navbar {
     padding: 2rem 4rem;
+  }
+  .navbar__container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    -webkit-backdrop-filter: blur(0.4rem);
+            backdrop-filter: blur(0.4rem);
+    background-color: rgba(75, 75, 75, 0.3);
+    justify-content: flex-end;
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .navbar__container.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+  .navbar__list {
+    width: 22rem;
+    background: rgb(255, 250, 240);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3rem;
+    padding: 3rem;
+    transition: all 0.3s;
+    transform: translateX(100%);
+  }
+  .navbar__container.visible .navbar__list {
+    transform: translateX(0);
+  }
+  .navbar__list-item-link {
+    font-size: 1.8rem;
+  }
+  .navbar__list-item-link::after {
+    content: none;
+  }
+  .navbar__icon {
+    display: block;
   }
 }
 
