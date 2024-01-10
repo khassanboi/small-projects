@@ -861,7 +861,7 @@ ul {
   display: flex;
   flex-direction: column;
   background-color: #e8b574;
-  background-image: url(../img/footer-bg.png);
+  background-image: url(../images/footer-bg.png);
 }
 .footer__top {
   width: 100%;
