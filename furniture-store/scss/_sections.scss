@@ -109,7 +109,7 @@
   }
 
   &__checkout {
-    width: 35%;
+    width: 50rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -121,6 +121,10 @@
   &__category {
     color: rgba($color: #333, $alpha: 0.3);
     margin-bottom: 1rem;
+  }
+
+  &__price {
+    font-family: "Mukta", sans-serif;
   }
 
   &__rating {
@@ -172,6 +176,27 @@
 
     &:hover {
       transform: none;
+    }
+  }
+
+  @media only screen and (max-width: $bp-md) {
+    &__img {
+      width: 40%;
+    }
+  }
+
+  @media only screen and (max-width: $bp-xs) {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__img {
+      width: 80%;
+      align-self: center;
+    }
+
+    &__checkout {
+      width: 100%;
     }
   }
 }

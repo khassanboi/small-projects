@@ -61,7 +61,7 @@
         <div class="product__checkout">
           <div class="product__info">
             <p class="p product__category">Living Room</p>
-            <h3 class="h-3 product__price">649,000 UZS</h3>
+            <h3 class="h-3 product__price" id="price">649,000 UZS</h3>
             <div class="product__rating">
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star checked"></span>
@@ -80,11 +80,9 @@
               required
               class="product__calculator-input"
             >
-              <option value="cheap-fabric" selected>Cheap Fabric +0 UZS</option>
-              <option value="expensive-fabric">
-                Expensive Fabric +79,000 UZS
-              </option>
-              <option value="luxury-fabric">Luxury Fabric +249,000 UZS</option>
+              <option value="0" selected>Cheap Fabric +0 UZS</option>
+              <option value="79000">Expensive Fabric +79,000 UZS</option>
+              <option value="249000">Luxury Fabric +249,000 UZS</option>
             </select>
 
             <label for="wood" class="product__calculator-label"
@@ -96,11 +94,9 @@
               required
               class="product__calculator-input"
             >
-              <option value="artificial-wood" selected>
-                Artificial Wood +0 UZS
-              </option>
-              <option value="walnut-wood">Walnut Wood +149,000 UZS</option>
-              <option value="oak-wood">Oak Wood +149,000 UZS</option>
+              <option value="0" selected>Artificial Wood +0 UZS</option>
+              <option value="149000">Oak Wood +149,000 UZS</option>
+              <option value="379000">Walnut Wood +379,000 UZS</option>
             </select>
 
             <label for="amount" class="product__calculator-label">Amount</label>
@@ -115,9 +111,12 @@
                 required
                 class="product__calculator-input product__calculator-input--amount"
               />
-              <button class="btn btn--primary product__calculator-btn">
-                ADD TO CART
-              </button>
+              <a
+                class="btn btn--primary product__calculator-btn"
+                onclick="calculate()"
+              >
+                calculate
+              </a>
             </div>
           </form>
         </div>
@@ -177,5 +176,6 @@
         </ul>
       </div>
     </footer>
+    <script src="../js/calculator.js"></script>
   </body>
 </html>
