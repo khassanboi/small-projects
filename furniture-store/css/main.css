@@ -44,7 +44,7 @@ section,
 main,
 footer {
   width: 100%;
-  padding: 3rem 5rem;
+  padding: 2rem 5rem;
   display: flex;
   align-items: center;
 }
@@ -54,7 +54,7 @@ footer {
   section,
   main,
   footer {
-    padding: 3rem;
+    padding: 1rem 3rem;
   }
 }
 
@@ -363,14 +363,14 @@ ul {
   width: 60%;
 }
 .navbar__icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #4b4b4b;
   cursor: pointer;
   display: none;
 }
 @media only screen and (max-width: 30em) {
   .navbar {
-    padding: 2rem 4rem;
+    padding: 2rem 3rem;
   }
   .navbar__container {
     display: flex;
@@ -790,6 +790,7 @@ ul {
   }
   .work__description {
     width: 100%;
+    padding: 2rem;
   }
 }
 
@@ -975,5 +976,8 @@ ul {
     flex-direction: column-reverse;
     gap: 5rem;
     align-items: start;
+  }
+  .footer__top-form {
+    height: 5rem;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -62,14 +62,14 @@
   }
 
   &__icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: $color-primary;
     cursor: pointer;
     display: none;
   }
 
   @media only screen and (max-width: $bp-xs) {
-    padding: 2rem 4rem;
+    padding: 2rem 3rem;
 
     &__container {
       display: flex;
