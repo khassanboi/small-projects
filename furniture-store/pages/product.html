@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/img/favicon/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Mukta:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Product Item Title - Whimsy Furniture Store</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar__logo">
+        <img
+          src="../img/logo.svg"
+          alt="Company Logo Image"
+          class="navbar__logo-img"
+        />
+      </a>
+      <ul class="navbar__list">
+        <li class="navbar__list-item">
+          <a href="../index.html" class="navbar__list-item-link">Home</a>
+        </li>
+        <li class="navbar__list-item">
+          <a
+            href="products.html"
+            class="navbar__list-item-link navbar__list-item-link--active"
+            >Products</a
+          >
+        </li>
+        <li class="navbar__list-item">
+          <a href="our-work.html" class="navbar__list-item-link">Our Work</a>
+        </li>
+        <li class="navbar__list-item">
+          <a href="contact-us.html" class="navbar__list-item-link"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main class="product">
+      <h2 class="h-2">Glossy Cube</h2>
+      <div class="product__container">
+        <img
+          src="../img/furniture/glossy-cube.png"
+          class="product__img"
+          alt="Product Image"
+        />
+        <div class="product__checkout">
+          <div class="product__info">
+            <p class="p product__category">Living Room</p>
+            <h3 class="h-3 product__price">649,000 UZS</h3>
+            <div class="product__rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </div>
+          <form action="#" class="product__calculator">
+            <label for="fabric" class="product__calculator-label"
+              >Choose Fabric Type</label
+            >
+            <select
+              name="fabric"
+              id="fabric"
+              required
+              class="product__calculator-input"
+            >
+              <option value="cheap-fabric" selected>Cheap Fabric +0 UZS</option>
+              <option value="expensive-fabric">
+                Expensive Fabric +79,000 UZS
+              </option>
+              <option value="luxury-fabric">Luxury Fabric +249,000 UZS</option>
+            </select>
+
+            <label for="wood" class="product__calculator-label"
+              >Choose Wood Type</label
+            >
+            <select
+              name="wood"
+              id="wood"
+              required
+              class="product__calculator-input"
+            >
+              <option value="artificial-wood" selected>
+                Artificial Wood +0 UZS
+              </option>
+              <option value="walnut-wood">Walnut Wood +149,000 UZS</option>
+              <option value="oak-wood">Oak Wood +149,000 UZS</option>
+            </select>
+
+            <label for="amount" class="product__calculator-label">Amount</label>
+            <div class="product__calculator-input-group">
+              <input
+                type="number"
+                name="amount"
+                id="amount"
+                min="1"
+                max="100"
+                value="1"
+                required
+                class="product__calculator-input product__calculator-input--amount"
+              />
+              <button class="btn btn--primary product__calculator-btn">
+                ADD TO CART
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="footer__top-text">
+          <h2 class="footer__top-title">
+            Subscribe to get the last news about us
+          </h2>
+          <p class="p p--light p--larger">
+            We recommended you to subscribe to our newspaper, enter you email to
+            get our daily update about us
+          </p>
+        </div>
+        <div class="footer__top-subscribe">
+          <form action="#" class="footer__top-form">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              class="footer__top-form-input"
+              placeholder="Enter your email"
+            />
+            <button type="submit" class="btn btn--accent footer__top-form-btn">
+              SUBSCRIBE
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__bottom-text">
+          <h2 class="footer__bottom-title">WHIMSY FURNITURE CORP.</h2>
+          <p class="p p--light p--larger">© 2024. All rights reserved</p>
+        </div>
+        <ul class="footer__nav">
+          <li class="footer__nav-item">
+            <a href="../index.html" class="footer__nav-item-link">Home</a>
+          </li>
+          <li class="footer__nav-item">
+            <a
+              href="product.html"
+              class="footer__nav-item-link footer__nav-item-link--active"
+              >Products</a
+            >
+          </li>
+          <li class="footer__nav-item">
+            <a href="our-work.html" class="footer__nav-item-link">Our Work</a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="contact-us.html" class="footer__nav-item-link"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

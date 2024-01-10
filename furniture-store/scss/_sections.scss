@@ -91,6 +91,91 @@
   }
 }
 
+.product {
+  &__container {
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 65%;
+    border-radius: 1rem;
+    max-height: 50rem;
+  }
+
+  &__checkout {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 2rem 3rem;
+  }
+
+  &__category {
+    color: rgba($color: #333, $alpha: 0.3);
+    margin-bottom: 1rem;
+  }
+
+  &__rating {
+    color: rgba($color-primary, 0.3);
+
+    .checked {
+      color: $color-accent;
+    }
+  }
+
+  &__calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  &__calculator-label {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+
+  &__calculator-input {
+    height: 5rem;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    font-family: "Mukta", sans-serif;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    appearance: none;
+    outline: none;
+
+    &--amount {
+      width: 60%;
+      margin: 0;
+    }
+  }
+
+  &__calculator-input-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__calculator-btn {
+    padding: 0 1rem;
+    border: none;
+    width: 35%;
+    margin: 0;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
 .our-work {
   &__container {
     width: 100%;
